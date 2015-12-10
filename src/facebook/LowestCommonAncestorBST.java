@@ -39,15 +39,34 @@ root.val < p.val && root.val == q.val
 h(root.right,p,q)
 case: descendant of itself
 */
+/*Approach#1: Traditional*/
+/*lcaBST
+ * 		// Zero:corner case, null are not anyone common ancestor
+	// First: findPath for both node NOTE: cannot find a path, return NULL
+	// Second: compare list from root and find the diverged node's parent		
+
+ * */
+/*findPath
+ * 		// Zero: base case, root == null, to end and found nothing. FLASE
+	// First: TRY LEFT OR RIGHT O(H) add node in the list until we encounter our node
+
+ * */
+/*Approach#2: Divide and Conquer*/
+
+/*lcaBSTII
+ * 	// Zero: check if both nodes contained in the tree or not
+	// First: rearrange smaller first
+	// Second: same side, keep going down. Otherwise, return current root
+ * */
 public class LowestCommonAncestorBST {
 	/*Approach#1: Traditional*/
-	/*lca
+	/*lcaBST
 	 * 		// Zero:corner case, null are not anyone common ancestor
 		// First: findPath for both node NOTE: cannot find a path, return NULL
 		// Second: compare list from root and find the diverged node's parent		
 
 	 * */
-	public TreeNode lca(TreeNode root, TreeNode p, TreeNode q){
+	public TreeNode lcaBST(TreeNode root, TreeNode p, TreeNode q){
 		// Zero:corner case, null are not anyone common ancestor
 		if (root == null || p == null || q == null)
 			return null;
@@ -67,6 +86,9 @@ public class LowestCommonAncestorBST {
 		return list1.get(i-1);
 	}
 	/*findPath
+	 * 		// Zero: base case, root == null, to end and found nothing. FLASE
+		// First: TRY LEFT OR RIGHT O(H) add node in the list until we encounter our node
+
 	 * */
 	private boolean findPath(TreeNode root, TreeNode node, List<TreeNode> list){
 		// Zero: base case, root == null, to end and found nothing. FLASE
@@ -85,21 +107,28 @@ public class LowestCommonAncestorBST {
 		list.remove(list.size()-1);
 		return false;
 	}
-	/*
+	/*Approach#2: Divide and Conquer*/
+	/*lcaBSTII
+	 * 	// Zero: check if both nodes contained in the tree or not
+		// First: rearrange smaller first
+		// Second: same side, keep going down. Otherwise, return current root
 	 * */
-	public TreeNode lcaII(TreeNode root, TreeNode p, TreeNode q){
+	public TreeNode lcaBSTII(TreeNode root, TreeNode p, TreeNode q){
+		// Zero: check if both nodes contained in the tree or not
 		if (!covers(root,p) || !covers(root,q)){
 			return null;
 		}
+		// First: rearrange smaller first
 		if (p.val > q.val) {
-            return lcaII(root, q, p);
+            return lcaBSTII(root, q, p);
         }
+		// Second: same side, keep going down. Otherwise, return current root
         if (root.val <= q.val && root.val >= p.val) {
             return root;
         } else if (root.val > q.val && root.val > p.val) {
-            return lcaII(root.left, p, q);
+            return lcaBSTII(root.left, p, q);
         } else if (root.val < q.val && root.val < p.val) {
-            return lcaII(root.right, p, q);
+            return lcaBSTII(root.right, p, q);
         } else {
             return null;
         }	
@@ -123,20 +152,20 @@ public class LowestCommonAncestorBST {
 		node3.right = node8;
 		LowestCommonAncestorBST sol = new LowestCommonAncestorBST();
 		System.out.println("root:"+node1+", node1:"+node3+", node4:"+node4);
-		System.out.println(sol.lca(node1, node3, node4));
+		System.out.println(sol.lcaBST(node1, node3, node4));
 		System.out.println("root:"+node1+", node1:"+node3+", node8:"+node8);
-		System.out.println(sol.lca(node1, node3, node8));
+		System.out.println(sol.lcaBST(node1, node3, node8));
 		System.out.println("root:"+node1+", node1:"+node3+", nodeOut:"+nodeOut);
-		System.out.println(sol.lca(node1, node3, nodeOut));
+		System.out.println(sol.lcaBST(node1, node3, nodeOut));
 		System.out.println("root:"+node1+", node1:"+node3+", node1:"+node3);
-		System.out.println(sol.lca(node1, node3, node3));
+		System.out.println(sol.lcaBST(node1, node3, node3));
 		System.out.println("root:"+node1+", node1:"+node3+", node4:"+node4);
-		System.out.println(sol.lcaII(node1, node3, node4));
+		System.out.println(sol.lcaBSTII(node1, node3, node4));
 		System.out.println("root:"+node1+", node1:"+node3+", node8:"+node8);
-		System.out.println(sol.lcaII(node1, node3, node8));
+		System.out.println(sol.lcaBSTII(node1, node3, node8));
 		System.out.println("root:"+node1+", node1:"+node3+", nodeOut:"+nodeOut);
-		System.out.println("COULD WRONG:"+sol.lcaII(node1, node3, nodeOut));
+		System.out.println("COULD WRONG:"+sol.lcaBSTII(node1, node3, nodeOut));
 		System.out.println("root:"+node1+", node1:"+node3+", node1:"+node3);
-		System.out.println(sol.lcaII(node1, node3, node3));		
+		System.out.println(sol.lcaBSTII(node1, node3, node3));		
 	}
 }
