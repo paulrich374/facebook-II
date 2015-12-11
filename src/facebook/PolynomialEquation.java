@@ -9,7 +9,7 @@ import java.util.List;
  * where a, b, c, d lie between [0, 10^5]
  * http://buttercola.blogspot.com/2014/11/facebook-write-all-solutions-for-a3-b3.html
  * */
-
+// Like ThreeSumItself2
 /*Approach#1: T:O(n^4), S:O(1)*/
 /*a= 0~n, b=a+1~n, c= b+1~n, d= c+1~n*/
 /*Approach#2: T:O(n^2), S:O(n)*/

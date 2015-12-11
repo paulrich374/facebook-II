@@ -2,11 +2,13 @@ package facebook;
 import java.util.*;
 /*
  * Facebook: Two elements sum up to a third
+like Polynomial Equations
  * Given a sorted array, write a program to decide if two elements sum up a third.
  * http://buttercola.blogspot.com/2014/11/facebook-two-elements-sum-up-to-third.html
  * */
-/*Approach#1 Time:O(n^2), Space:O(1), can NOT solve array with negative number */
-/*Approach#2 Time:O(n^2), Space:O(n) hash map, can solve array with negative number */
+/*Approach#1 Time:O(n^2), Space:O(1),Two pointers, can NOT solve array with negative number */
+/*Approach#2 Time:O(n^2), Space:O(n),Two pointers, hash map, can solve array with negative number
+ * like Polynomial Equations */
 
 public class ThreeSumItself {
 	/*Approach#1 Time:O(n^2), Space:O(1), can NOT solve array with negative number */
