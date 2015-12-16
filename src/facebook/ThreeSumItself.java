@@ -1,7 +1,15 @@
 package facebook;
 import java.util.*;
 /*
- * Facebook: Two elements sum up to a third
+ *   SORTED 
+     时间复杂度O(n^2) no need 时间复杂度O(n!) since we sorted and don't need to try all combinations
+     only three elements combinations
+
+Facebook: Two elements sum up to a third
+
+
+HashMap like Polynomial Equations
+
 like Polynomial Equations
  * Given a sorted array, write a program to decide if two elements sum up a third.
  * http://buttercola.blogspot.com/2014/11/facebook-two-elements-sum-up-to-third.html
@@ -10,15 +18,30 @@ like Polynomial Equations
 /*Approach#2 Time:O(n^2), Space:O(n),Two pointers, hash map, can solve array with negative number
  * like Polynomial Equations */
 
+/*Approach#1 Time:O(n^2), Space:O(1), can NOT solve array with negative number 
+ * 		// Zero: null check and length check
+	// First: Fix one last element, avoid duplicate the fixed element and two sum the rest
+
+ * */
+/*Approach#2 Time:O(n^2), Space:O(n) hash map, can solve array with negative number
+ * 		// Zero: null check and length check
+			// First: HashMap record all integers value and its index for sum to match
+		// Second: Pair(i) by pair(j=i+1) to check if their sum has a match in the map
+ *  */
 public class ThreeSumItself {
-	/*Approach#1 Time:O(n^2), Space:O(1), can NOT solve array with negative number */
+	/*Approach#1 Time:O(n^2), Space:O(1), can NOT solve array with negative number 
+	 * 		// Zero: null check and length check
+		// First: Fix one last element, avoid duplicate the fixed element and two sum the rest
+
+	 * */
 	public List<List<Integer>> ThreeSumItselfCompute(int[] nums){
 		
 		List<List<Integer>> res = new ArrayList<List<Integer>>();
+		// Zero: null check and length check
 		if (nums == null || nums.length <= 2)
 			return res;
 		
-		// Fix one last element
+		// First: Fix one last element, avoid duplicate the fixed element and two sum the rest
 		for (int i = nums.length-1; i >= 2; i--){
 			// avoid duplicate solution
 			if (i != nums.length-1 && nums[i] == nums[i+1])
@@ -53,21 +76,25 @@ public class ThreeSumItself {
 		}
 		return res;
 	}
-	/*Approach#2 Time:O(n^2), Space:O(n) hash map, can solve array with negative number */
+	/*Approach#2 Time:O(n^2), Space:O(n) hash map, can solve array with negative number
+	 * 		// Zero: null check and length check
+  			// First: HashMap record all integers value and its index for sum to match
+		// Second: Pair(i) by pair(j=i+1) to check if their sum has a match in the map
+	 *  */
 	public List<List<Integer>> ThreeSumItselfCompute2(int[] nums){
-		
+		// Zero: null check and length check
 		List<List<Integer>> res = new ArrayList<List<Integer>>();
-		if (nums == null || nums.length == 0)
+		if (nums == null || nums.length <= 2)
 			return res;
 		
-		// HashMap record all integers vlaue and its index
+		// First: HashMap record all integers value and its index for sum to match
 		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 		for (int i = 0 ; i < nums.length;i++){
 			if (!map.containsKey(nums[i]))
 				map.put(nums[i], i);
 		}
 		
-		// Pair by pair to check if their sum is in the map
+		// Second: Pair(i) by pair(j=i+1) to check if their sum has a match in the map
 		for (int j = 0 ; j < nums.length;j++){
 			for (int k = j+1; k < nums.length;k++){
 				int sum = nums[j] + nums[k];

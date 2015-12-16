@@ -12,12 +12,12 @@ import java.util.PriorityQueue;
  * http://www.zrzahid.com/k-closest-points/
  */
 
-/* // Approach#1 
+/* // Approach#1 Heap
 * // T:O(k logk)  T:(n-k logk)
 * 			// First: inside the loop, move k inside the heap
 * 			// Second: inside the loop, for larger than k, compare with criterion and poll,offer the heap
 * // max-heap comparator
-* // Approach#2 
+* // Approach#2 Quick Select
 * // klcosestQuickSelect
 	  		// First: prepare pass down in-place array
 	  		// Second:  set 0 and len-1 as boundary
