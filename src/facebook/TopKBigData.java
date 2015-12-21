@@ -13,11 +13,13 @@ package facebook;
     	然后再进行归并(Merge)处理，找出最终的10个最常出现的词。
     方案2：MapReduce
     	MapReduce
+    	
 Map(	string	key,	string	value)
 //key:	the	id	of	a	line
 //value:	the	content	of	the	line
 for	each	word	in	value:
 OutputTemp(	 word,	1);
+
 
 Reduce(	string	key,	list  valueList)
 //key:	the	name	of	a	word
@@ -26,6 +28,7 @@ int	sum	=	0;
 for	value in valueList:
 sum+=value;
 OutputFinal(key,sum);
+
  * */
 public class TopKBigData {
 	 /*Approach#1 Hash and External Sort(Divide and Merge)

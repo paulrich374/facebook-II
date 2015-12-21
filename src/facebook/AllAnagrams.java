@@ -78,6 +78,7 @@ public class AllAnagrams {
 	 * input            output               shuffle                           input                         output
 	 * k = lineID       k = sort(word)        ===>                             k = sort(word)                k = anagram0
 	 * v = word         v = word                                               v = {anagram0, anagram1,..}   v = {anagram1, anagram2,..}
+	 * OutputTemp(k = sort(word) ,v =  word);                                  OutputFinal(k = anagram0, v = {anagram1, anagram2,..});   
 	 */
 	public static void main(String[] args){
 		AllAnagrams sol = new AllAnagrams();
