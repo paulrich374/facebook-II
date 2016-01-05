@@ -1,4 +1,4 @@
-package NineChapter;
+package NineChapter5DP;
 
 public class NineChapter5DP {
 /*http://buttercola.blogspot.com/2014/10/nine-chapter-lesson-5-dynamic.html
