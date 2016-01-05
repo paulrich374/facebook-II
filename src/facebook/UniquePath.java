@@ -57,10 +57,12 @@ Exception in thread "main" java.lang.StackOverflowError
 // Zero: null check	
 // First: since we only concern [i-1][j] or [i][j-1]
 //        only need 1 array
-//        NOTE:  dp[k]  repalce dp[i-1][j]
+//        NOTE:  dp[j]    replace dp[i][j]
+//        NOTE:  dp[j]    replace dp[i-1][j]
+//		  NOTE:  dp[j-1]  replace dp[i][j-1]
 //        Every time rewrite row value 
 //        first row: all 1
-//        the other row: dp[k] = dp[k] + dp[k-1]
+//        the other row: dp[j] = dp[j] + dp[j-1]
 //        // dp[0] always 1 no accmulation	
  * 
  */
