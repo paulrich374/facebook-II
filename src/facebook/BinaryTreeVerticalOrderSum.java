@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 
+
 /*
  * 
  *     Given a binary tree, print it vertically. The following example illustrates vertical order traversal.

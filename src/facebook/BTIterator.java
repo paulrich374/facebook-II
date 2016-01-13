@@ -2,6 +2,8 @@ package facebook;
 
 import java.util.Stack;
 
+
+
 /*
  * 							 Inorder - next smallest number in the BST
  *                           http://codingweihung.blogspot.com/2015/10/tree-traversal.html
@@ -32,6 +34,9 @@ import java.util.Stack;
  * */
 public class BTIterator {
 	private Stack<TreeNode> stack;
+	
+	
+	
 	/*===================InOrder==================*/
 	// First: pushLeftChildren
 	public BTIterator(TreeNode root){
@@ -60,6 +65,9 @@ public class BTIterator {
 			root = root.left;
 		}		
 	}	
+	
+	
+	
 	/*===================PreOrder==================*/	
 	// First: need put a node for next	
 	// second: check stack, already has something inside
@@ -87,6 +95,9 @@ public class BTIterator {
 		if (res.left != null) stack.push(res.left);
 		return res.val;
 	}	
+	
+	
+	
 	/*===================PostOrder==================*/	
 	//http://www.yaldex.com/game-programming/FILES/03fig12.gif
 	// First: need put a node for next
@@ -132,6 +143,9 @@ public class BTIterator {
 		//	root = root.right.left;			
 		//}
 	}	
+	
+	
+	
 	public static void main(String[] args){
 		final TreeNode root = new TreeNode(4);
 		root.left = new TreeNode(2);
@@ -184,6 +198,31 @@ public class BTIterator {
 		System.out.print("nextPost ");
 		while(sol6.hasNextPost()){
 			System.out.print(sol6.nextPost()+", ");
+		}	
+		
+		TreeNode rootpre = new TreeNode(1);
+		rootpre.left = new TreeNode(2);
+		rootpre.right = new TreeNode(3);
+		
+		rootpre.left.left = new TreeNode(4);
+		rootpre.left.right = new TreeNode(5);
+		
+		rootpre.right.left = new TreeNode(23);
+		rootpre.right.right = new TreeNode(36);
+		
+		rootpre.left.left.left = new TreeNode(21);
+		rootpre.left.left.right = new TreeNode(25);
+		
+		rootpre.left.left.right.left = new TreeNode(24);
+		rootpre.left.left.right.right = new TreeNode(26);
+		
+		System.out.println();
+		System.out.print("nextPre ");
+		BTIterator solpre = new BTIterator(rootpre,true);		
+		while(solpre.hasNextPre()){
+			System.out.print(solpre.nextPre()+", ");
 		}		
+		//Preorder: [1, 2, 4, 21, 25, 24, 26, 5, 3, 23, 36]
+
 	}
 }

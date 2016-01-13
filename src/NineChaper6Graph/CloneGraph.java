@@ -1,20 +1,6 @@
 package NineChaper6Graph;
 /*
-  NineChaper6Graph
-  		1. clone graph
-  			e.g., clone graph (/facebook/src/NineChaper6Graph/CloneGraph.java)
 
-		//       if (!map.containsKey(neighbor)){ => new clone node and map put and stack push
-		//       Whatever map contains or not => map.get(current).neighbors.add(map.get(neighbor));
-
-
-  		2. topological sort
- 			e.g., class Schedule
-                  class sceduleII 
-                  
-		3. Permutations II
-		
-		4. Subsets II
  
  * */
 import java.util.ArrayList;

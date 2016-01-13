@@ -44,11 +44,12 @@ public class NineChapter3BinaryTree {
 	 				}
 	 			} 		
 	 		• Example:==================================
-	 		    	1. Binary Tree Pre-order Traversal:
-	 		    	2. Maximum Depth of the binary tree:
-	 		    	3. Balanced binary tree	
-	 		    	4. Minimum depth of the binary tree:
-					5. Binary Tree Maximum Path Sum
+	 		    	1. Binary Tree Pre-order Traversal: 
+	 		    	2. Balanced binary tree	 				(/facebook/src/NineChapter3BinaryTree/BalancedBTandMaxMinDepth.java)
+	 		    	3. Binary Tree Maximum Path Sum         (/facebook/src/NineChapter3BinaryTree/BinaryTreeMaximumPathSum.java)
+	 		    	4. Maximum Depth of the binary tree:	(/facebook/src/NineChapter3BinaryTree/BalancedBTandMaxMinDepth.java)
+	 		    	5. Minimum depth of the binary tree:	(/facebook/src/NineChapter3BinaryTree/BalancedBTandMaxMinDepth.java)
+					. 
 					==================================
  	2. Binary Tree BFS Traversal
  		• BFS Traversal
@@ -57,24 +58,24 @@ public class NineChapter3BinaryTree {
 	 		• Example:==================================
 	 				1. Binary tree level-order traversal:
 	 				2. Binary Tree ZigZag traversal
-	 				Surrounded Regions
-	 				Number of Islands
-	 				Word Ladder II
+	 				3. Surrounded Regions
+	 				4. Number of Islands
+	 				5. Word Ladder II
 	 				==================================
  	3. Binary Search Tree		
 	 		• Example:==================================
-					1. Validate Binary Search Tree BST 				
-					2. Insert a node in BST
-					3. Search Range in a BST
-					4. Implement an iterator of a BST (In-order traversal)
-					5. Delete a node in BST
+					1. Validate Binary Search Tree BST 						(/facebook/src/NineChapter3BinaryTree/ValidateBST.java)
+					2. Insert a node in BST     							(/facebook/src/NineChapter3BinaryTree/InsertDeleteRangeNodeBST.java)
+					3. Search Range in a BST								(/facebook/src/NineChapter3BinaryTree/InsertDeleteRangeNodeBST.java)
+					4. Implement an iterator of a BST (In-order traversal)  (/facebook/src/facebook/BSTIterator.java)
+					5. Delete a node in BST 								(/facebook/src/NineChapter3BinaryTree/InsertDeleteRangeNodeBST.java)
 						• Case1: The node to delete has no left and right children (simple)
 						• Case2: The node to delete has only one subtree (simple)
 						• Case3: The node to delete has two children (most complicated)
-					6. Least(Lowest) Common Ancestor (LCA) in BST
+					6. Least(Lowest) Common Ancestor (LCA) in BST           (/facebook/src/facebook/LowestCommonAncestorBST.java)
 						• Recursive Solution:
 						• Iterative Solution:
-					7. Least(Lowest) Common Ancestor (LCA) in BT
+					7. Least(Lowest) Common Ancestor (LCA) in BT            (/facebook/src/facebook/LowestCommonAncestor.java)
 						• Naive Solution:
 						• Divide and Conquer solution.
 	 				==================================
