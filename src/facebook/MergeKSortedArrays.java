@@ -156,10 +156,13 @@ public class MergeKSortedArrays {
 			arr.add(Arrays.asList(A[i]));
 		}
 		System.out.println("K array: "+arr);
+		
 		Long startTime = System.nanoTime();
 		System.out.println("Merged array: "+sol.mergeKArraysRecursive(arr));
 		Long estimatedTime = System.nanoTime() - startTime;
 		System.out.println("Recusrive Approach Time: "+estimatedTime);
+		
+		
 		Long startTime2 = System.nanoTime();		
 		System.out.println("Merged array: "+sol.mergeKArraysIterative(arr));
 		Long estimatedTime2= System.nanoTime() - startTime2;

@@ -323,7 +323,8 @@ public class ExpressionEvaluation {
 		String s5 = "6/2-1";
 		System.out.println("Expression: "+s5+" = "+sol.eval(s5));
 		System.out.println("Expression: "+s5+" = "+sol.evalConstantSpace(s5));	
-		String[] tokens = new String[]{"100", "*", "(", "2", "+", "12", ")", "/", "14"};
+		//String[] tokens = new String[]{"100", "*", "(", "2", "+", "12", ")", "/", "14"};
+		String[] tokens = new String[]{"(", "1", "(","+", "4", "+", "5", "+", "2", ")","-","3",")","+","(","6","+","8",")"};
 		System.out.println("Expression: "+Arrays.toString(tokens)+" = "+sol.evalWithParentheses(tokens));
 
 	}
