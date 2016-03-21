@@ -192,22 +192,26 @@ public class SQRTX {
 		System.out.println("sqrt("+x+") = "+sol.sqrt(x));
 		System.out.println("sqrtReal("+x+") = "+sol.sqrtReal((double)x));		
 		System.out.println("sqrtNewton("+x+") = "+sol.sqrtNewton(x));		
-		
+		System.out.println();
 		
 		x = 9;
 		System.out.println("sqrt("+x+") = "+sol.sqrt(x));
 		System.out.println("sqrtReal("+x+") = "+sol.sqrtReal((double)x));
 		System.out.println("sqrtNewton("+x+") = "+sol.sqrtNewton(x));		
+		System.out.println();
+
 		
 		x = 12;
 		System.out.println("sqrt("+x+") = "+sol.sqrt(x));	
 		System.out.println("sqrtReal("+x+") = "+sol.sqrtReal((double)x));		
 		System.out.println("sqrtNewton("+x+") = "+sol.sqrtNewton(x));		
+		System.out.println();
 		
 		x = 20;
 		System.out.println("sqrt("+x+") = "+sol.sqrt(x));
 		System.out.println("sqrtReal"+x+") = "+sol.sqrtReal((double)x));
 		System.out.println("sqrtNewton("+x+") = "+sol.sqrtNewton(x));		
+		System.out.println();
 		
 		
 	}

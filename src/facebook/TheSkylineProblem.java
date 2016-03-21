@@ -53,7 +53,9 @@ For instance, the skyline in Figure B should be represented as:
 
  * */
 
-/*skyline
+
+
+/*skyline  O(nlogn+n)
  * 		// First: sort the interval
 
  * 		// Second: compare interval with previous interval to merge, split
@@ -70,7 +72,7 @@ For instance, the skyline in Figure B should be represented as:
  * */
 
 
-/*skylineII
+/*skylineII  O(nlogn+n)
  * 		// First: split building into two edge and sort
 	// Second: create a max-heap with first height 0, we offer height and poll height
 	// Third: for every edge, - put in(new skyline), + remove it(old skyline), if current max height not the same as before we add in
@@ -84,6 +86,9 @@ public class TheSkylineProblem {
 			return a.end - b.end;
 		}
 	}
+	
+	
+	
 	/*skyline
 	 * 		// First: sort the interval
 
@@ -157,6 +162,10 @@ public class TheSkylineProblem {
 		resInterval.add(a);
 		return resInterval;		
 	}
+	
+	
+	
+	
 	/*skylineII
 	 * 把每一个building拆成两个edge，
 	 * 一个入一个出。
@@ -172,7 +181,7 @@ public class TheSkylineProblem {
 	public class pqComparator implements Comparator<Integer>{
 		@Override
 		public int compare(Integer a, Integer b){
-			return b-a;//descend		
+			return b-a;//descend, max-heap		
 		}
 	}	
 	/*skylineII
@@ -195,7 +204,9 @@ public class TheSkylineProblem {
 		Collections.sort(height, new Comparator<int[]>(){
 			public int compare(int[] a, int[] b){
 				if (a[0] != b[0]) return a[0] - b[0];
-				return a[1] - b[1];// enter in front of leave point
+				return a[1] - b[1];// start BEFORE end, height small BEFORE height large 
+				// BOTH START -10,-5=> -10->-5
+				// BOTH END 10, 5=>5->10 
 			}
 		});
 		// Second: create a max-heap with first height 0, we offer height and poll height
@@ -216,23 +227,32 @@ public class TheSkylineProblem {
 		// 然后你扫过去， is_in=true的你就加mem,is_in=false的你就-mem.每个事件点，
 		// 你会加或减一次，每加或减一次后，就check是不是超过总的
 		PriorityQueue<Integer> pq= new PriorityQueue<Integer>(10,new pqComparator());
+		// Avoid empty heap, still has ZERO value
 		pq.offer(0);
 		int prev = 0;
 		// Third: for every edge, - put in(new skyline), + remove it(old skyline), if current max height not the same as before we add in
 		// init 0, max height so far, if change, skyline redraw
 		for (int[] item:height){
+			// START, ADD
 			if (item[1] < 0 )
-				pq.offer(-item[1]);// negative, not in put in in. keep enter high
+				pq.offer(-item[1]);
+			// END, REMOVE
 			else 
-				pq.remove(item[1]);// positive, already in take it out
-			int cur = pq.peek();
-			if (prev != cur){
-				res.add(new int[]{item[0], cur});
-				prev = cur;
+				pq.remove(item[1]);
+			int max = pq.peek();
+			if (prev != max){
+				res.add(new int[]{item[0], max});
+				prev = max;
 			}
 		}
 		return res;
 	}	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args){
 		List<Interval> intervals = new ArrayList<Interval>();
 		intervals.add(new Interval(2, 9, 10));
@@ -249,7 +269,12 @@ public class TheSkylineProblem {
 		//}
 		List<Interval> res = sol.skyline(intervals);
 		System.out.println("skyline "+res);		
-		List<int[]> res2= sol.skylineII(intervals);
+		
+		
+		List<Interval> intervals2 = new ArrayList<Interval>();
+		intervals2.add(new Interval(0, 1, 3));		
+		
+		List<int[]> res2= sol.skylineII(intervals2);
 		System.out.print("skylineII ");
 		for (int[] item:res2){
 			System.out.print("["+item[0]+","+item[1]+"]");

@@ -33,7 +33,7 @@ import java.util.Stack;
 	// Second: map.containsKey(k) anf then for loop all neighbors if not visited recurse
 	// third: Push current vertex to stack which stores result
 * */ 
-public class TopologySortingArray {
+public class TopologySortingArrayCourseScheduleII {
 		/*topsort   stack + DFS
 		 * 		// First: call DFS for every vertices
 				// Second: copy integer from stack to list
@@ -200,7 +200,7 @@ public class TopologySortingArray {
 			//g.addEdge(3,1);
 			int[][] pre =  new int[][]{{2,5},{0,5},{0,4},{1,4},{3,2},{1,3}};
 			int number = 6;
-			TopologySortingArray sol = new TopologySortingArray();
+			TopologySortingArrayCourseScheduleII sol = new TopologySortingArrayCourseScheduleII();
 			System.out.println(" a list of edges[end,start],"+Arrays.toString(pre)+"\n ordering list: "+sol.topsort(number,pre));
 			System.out.println("\n ordering list Iterative: "+ Arrays.toString(sol.topsortIterative(number, pre)));
 			//Graph g2 = new Graph(4);

@@ -27,6 +27,8 @@ http://www.geeksforgeeks.org/stock-buy-sell/
  * 
  * */
 public class BestTimeToBuyAndSellStock {
+	
+	
 	/* I.   If you were only permitted to complete at most one transaction 
 (ie, buy one and sell one share of the stock), 
 	 *maxProfit T:O(n), S:O(1) 
@@ -47,6 +49,8 @@ public class BestTimeToBuyAndSellStock {
 		}
 		return global;
 	}
+	
+	
 	/* II.  You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). 
 	 * However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
 	 * 
@@ -67,6 +71,8 @@ public class BestTimeToBuyAndSellStock {
 		}
 		return global;
 	}	
+	
+	
 	/* III.  You may complete at most two transactions.
 	 * maxProfitIII T:O(n*k), S:O(k), k = 2 at most two transactions
 	 *              T:O(n), S:O(1)
@@ -84,7 +90,7 @@ public class BestTimeToBuyAndSellStock {
 		// 这是动态规划的实现细节哈～ 因为这里要省空间，所以使用了一维数组来存结果，
 		// 也就是说数据会被一行行的覆盖，那么这里就有个问题，如果要用上一行前一个元素旧的数据，
 		// 那么就得for循环倒着来走，如果正向走，那么走到j时，j+1已经被覆盖成新的数据，也就不对了～
-		// [i] = [i-1] when backward j = 2~1 so if forward j = 1~2 , [i] = [i], it is wrong
+		// [i] = [i-1] 用上一行 when backward j = 2~1 so if forward j = 1~2 , [i] = [i], it is wrong
 		int[] local = new int[3];
 		int[] global = new int[3];
 		for (int i = 0; i < prices.length -1; i++) {
@@ -97,6 +103,9 @@ public class BestTimeToBuyAndSellStock {
 		}
 		return global[2];
 	}
+	
+	
+	
 	public static void main(String[] args){
 		BestTimeToBuyAndSellStock sol = new BestTimeToBuyAndSellStock();
 		int[] prices = new int[]{2, 3, 10, 6, 4, 8, 1};

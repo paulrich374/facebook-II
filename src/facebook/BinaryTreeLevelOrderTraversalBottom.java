@@ -48,11 +48,10 @@ public class BinaryTreeLevelOrderTraversalBottom {
 		// [[], [15, 7], [9, 20], [3]]
 		while (!queue.isEmpty()){
 			int size = queue.size();
-			System.out.println(size);
-			List<Integer> itemtemp = new ArrayList<Integer>();
+			List<Integer> list = new ArrayList<Integer>();
 			for (int i = 0; i < size; i++){
 				TreeNode cur = queue.poll();
-				itemtemp.add(cur.val);
+				list.add(cur.val);
 				if (cur.left != null){
 					queue.offer(cur.left);
 					//itemtemp.add(cur.left.val);
@@ -62,7 +61,8 @@ public class BinaryTreeLevelOrderTraversalBottom {
 					//itemtemp.add(cur.right.val);
 				}
 			}
-			res.add(0,itemtemp);
+			// NOTE: BOTTOM UP
+			res.add(0,list);
 		}
 		return res;
 	}

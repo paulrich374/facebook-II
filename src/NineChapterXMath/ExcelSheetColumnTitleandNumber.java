@@ -63,18 +63,32 @@ public class ExcelSheetColumnTitleandNumber {
 			return "";
 		}
 		// First: mod and divide
-		StringBuilder sb = new StringBuilder();
+		//StringBuilder sb = new StringBuilder();
+		String res = "";
 		while( n != 0){
 			n-=1;
 			int digit = (n)%26;
-			sb.append((char) (digit+'A'));
+			//sb.append((char) (digit+'A'));
+			res = String.valueOf((char) (digit+'A'))+res;
 			n/=26;
 		}
-		return sb.reverse().toString();
-		
-		
-		
+		//return sb.reverse().toString();
+		return res;
 		/*
+n=26=>Z
+n=52=>AZ
+n=28=>AB
+n=703=>AAA
+n=18278=>ZZZ
+n=1000000001=>CFDGSXM
+s=Z=>26
+s=AZ=>52
+s=AB=>28
+s=BA=>53
+s=AAA=>703
+s=ZZZ=>18278
+s=CFDGSXM=>1000000001
+ 
 		StringBuilder sb = new StringBuilder();
 		// Zero: neg check
 		// n = 26+26+26+...= 26*n+k

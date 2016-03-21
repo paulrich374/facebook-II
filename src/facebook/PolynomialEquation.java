@@ -10,10 +10,15 @@ import java.util.List;
  * http://buttercola.blogspot.com/2014/11/facebook-write-all-solutions-for-a3-b3.html
  * */
 // Like ThreeSumItself2
+
+
 /*Approach#1: T:O(n^4), S:O(1)*/
 /*a= 0~n, b=a+1~n, c= b+1~n, d= c+1~n*/
+
+
 /*Approach#2: T:O(n^2), S:O(n)*/
-/*If the second time that the a^3 + b^3 exists in the hash table*/
+
+/*$$$$$$$$    If the second time that the a^3 + b^3 exists in the hash table*/
 
 public class PolynomialEquation {
 	/*Approach#1: T:O(n^4), S:O(1)*/

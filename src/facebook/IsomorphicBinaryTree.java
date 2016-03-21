@@ -40,8 +40,9 @@ isIsoMorphic(root1.left, root2.right) && (isIsoMorphic(root1.right, root2.left))
  * */
 
 
-/* Scramble String
- *  great
+/* 
+ *Q0: Scramble String
+    great
    /    \
   gr    eat
  / \    /  \
@@ -54,24 +55,62 @@ g   r  e   at
  / \    /  \
 r   g  e   at
            / \
-          a   t          
- * https://leetcode.com/problems/scramble-string/
- * Symmetric Tree 
- * helper( root1.left, root2.right ) && helper(root1.right, root2.left)
- *      if ( root1 == null && root2 == null )
+          a   t   
+https://leetcode.com/problems/scramble-string/
+
+ * Q1: Symmetric Tree 
+   helper( root1.left, root2.right ) && helper(root1.right, root2.left)
+        if ( root1 == null && root2 == null )
             return true;
         if ( root1 == null || root2 == null )
             return false;
         if ( root1.val != root2.val )
             return false;
  * https://leetcode.com/problems/symmetric-tree/
- * Recover Binary Search Tree
+
+ * Q2: Recover Binary Search Tree
  * 简单而言，第一个逆序点要记录，最后一个逆序点要记录，最后swap一下
  * https://leetcode.com/problems/recover-binary-search-tree/
- * 
+
+ * Q3: 
  * Same Tree
+ 
+ * Approach#1 RECURSIVE 
+    helper( root1.left, root2.left ) && helper(root1.right, root2.right)
+        if ( root1 == null && root2 == null )
+            return true;
+        if ( root1 == null || root2 == null )
+            return false;
+        if ( root1.val != root2.val )
+            return false;
+              
+  * Approach#2 ITERATIVE 
+        while( !q1.isEmpty() && !q2.isEmpty() ) {  
+            
+            TreeNode n1 = q1.poll();  
+            TreeNode n2 = q2.poll();  
+              
+            if (n1== null && n2 == null)
+                 continue;
+            if ( n1== null || n2 == null )
+                return false; 
+              
+            if(  n1.val!=n2.val ) return false;  
+              
+            q1.offer( n1.left);  
+            q1.offer( n1.right);  
+            q2.offer( n2.left);  
+            q2.offer( n2.right);  
+          
+        }  
+        return true;            
+            
+ * Q4: 
  * Subtree
+ * inorder match
+ 
  * 根字符串有关的题十有八九可以用DP来做，那么难点就在于如何找出递推公式。
+
  * */
 public class IsomorphicBinaryTree {
 	public boolean Isisomorphic(TreeNode root1, TreeNode root2){

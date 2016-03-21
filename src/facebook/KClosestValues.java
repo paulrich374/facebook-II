@@ -138,7 +138,7 @@ public class KClosestValues {
 			restemp.add(nums[l--]);
 			count++;
 		}	
-		//  LEFTOVER:
+		//  LEFTOVER:if there are no elements on the left side, then print right elemenrs
 		while (count < k && r < nums.length){
 			restemp.add(nums[r++]);
 			count++;

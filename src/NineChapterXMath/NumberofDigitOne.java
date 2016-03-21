@@ -140,13 +140,13 @@ public class NumberofDigitOne {
 		}
 		return count;
 	}
-	/*countOneRecursiveReal
+	/*countOneRecursive
 	 * 		// Base case:n<10, n<=0
 			// Recursive case:
 			// current + next + remainder
 			// digit*countOneRecursiveReal(power-1)+countOneRecursiveReal(remiander);
 	 * */
-	public int countOneRecursiveReal(int n){
+	public int countOneRecursive(int n){
 		// Base case:n<10, n<=0
 		if (n <= 0 )
 			return 0;
@@ -158,9 +158,25 @@ public class NumberofDigitOne {
 		int remiander = n%power;
 		// Recursive case:
 		// current + next + remainder
-		return (digit==1 ?(remiander+1):power ) + digit*countOneRecursiveReal(power-1)+countOneRecursiveReal(remiander);
+		return (digit==1 ?(remiander+1):power ) + digit*countOneRecursive(power-1)+countOneRecursive(remiander);
 	}	
-	// O(m), Space:O(m)
+
+	public static void main(String[] args){
+		NumberofDigitOne sol = new NumberofDigitOne();
+		int n = 13;
+		System.out.println(n+" number of digit one: "+sol.countOne(n));
+		System.out.println(n+" number of digit one: "+sol.countOneRecursive(n));
+	    n = 99;
+		System.out.println(n+" number of digit one: "+sol.countOne(n));
+		System.out.println(n+" number of digit one: "+sol.countOneRecursive(n));
+	    n = 215;
+		System.out.println(n+" number of digit one: "+sol.countOne(n));
+		System.out.println(n+" number of digit one: "+sol.countOneRecursive(n));			
+	}
+}
+/*
+ * 
+ * 	// O(m), Space:O(m)
 	public int countOneRecursive(int n){
 		long m =1;
 		int[] count = new int[2];
@@ -190,14 +206,4 @@ public class NumberofDigitOne {
 		
 	    // return (digit == 1 ? (remainder+1) : power) + digit*countDigitOne(power - 1) + countDigitOne(remainder);  		
 	}
-	public static void main(String[] args){
-		NumberofDigitOne sol = new NumberofDigitOne();
-		int n = 13;
-		System.out.println(n+" number of digit one: "+sol.countOne(n));
-		System.out.println(n+" number of digit one: "+sol.countOneRecursiveReal(n));
-	    n = 99;
-		System.out.println(n+" number of digit one: "+sol.countOne(n));
-		System.out.println(n+" number of digit one: "+sol.countOneRecursiveReal(n));
-			
-	}
-}
+ * */

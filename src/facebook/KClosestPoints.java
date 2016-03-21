@@ -179,27 +179,36 @@ public class KClosestPoints {
 		// Second: any less than pivot's value, swap with SWAPINDEX
 		// Third: SWAPINDEX++, swap end with SWAPINDEX and return SWAPINDEX
 	 * */
+
 	private int partition(Point[] points, int start, int end){
 		// First: end as pivot's value
 		Point pivotPoint = points[end];
 		Point origin = new Point(0,0);
-		int swapIndex = start - 1; 
+		//int swapIndex = start - 1; 
+		int swapIndex = start ; 
 		// Second: any less than pivot's value, swap with SWAPINDEX
 		for (int cur = start; cur < end; cur++){
 			if (points[cur].getDist(origin) < pivotPoint.getDist(origin)){
-				swapIndex++;
+				//swapIndex++;
+				//Point temp = points[cur];
+				//points[cur] = points[swapIndex];
+				//points[swapIndex] = temp;
 				Point temp = points[cur];
 				points[cur] = points[swapIndex];
 				points[swapIndex] = temp;
+				swapIndex++;
 			}
 		}
 		// Third: SWAPINDEX++, swap end with SWAPINDEX and return SWAPINDEX
-		swapIndex++;
-		Point temp = points[swapIndex];
+		//swapIndex++;
+		//Point temp = points[swapIndex];
+		//points[swapIndex] = pivotPoint;
+		//points[end] = temp;
+		points[end] = points[swapIndex];
 		points[swapIndex] = pivotPoint;
-		points[end] = temp;
 		return swapIndex;
 	}
+	
 	public static void main(String[] args){
 		KClosestPoints sol = new KClosestPoints();
 		List<Point> points = new ArrayList<Point>();

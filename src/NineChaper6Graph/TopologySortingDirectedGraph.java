@@ -8,6 +8,22 @@ import java.util.Stack;
 
 
 /*		
+ * 			 取代堆結構
+ *           1. Stack => ArrayList(store idnex) + Array(store element)
+ *    	     取代指向圖結構
+ *    		 2. Directed graph adjacent list => Map adjacent list<Integer, ArrayList<Itneger>>
+ * 			 沒有進來的邊先
+ * 			 慢慢把其他的邊 變成沒有進來的邊
+ * 			https://leetcode.com/problems/course-schedule/
+ * 			https://leetcode.com/problems/course-schedule-ii/
+ * 			 3. BFS iterative to replace DFS recursive\
+ * 				| calculate the number of incoming edges for each vertex
+ * 				| Queue zero incoming edge vertex
+ * 				| BFS :update the count of zero incoming edge vertex and pop element into result array
+ * 				|     decrement other vertex's incoming edge from this current pop index
+ * 				|     if incoming edge count == 0, add into Queue and increment the count of zero incoming edge vertex
+ * 				|     finally, every index should all become zero incoming edge
+ * 
  * 
  *      TOPOLOGICAL SORT
  *      1. A DirectedGraph
@@ -98,7 +114,10 @@ ListIterator.add(E element) is 	O(n - index)
  *     COMPLEXITY: O(V+E)
 
  * */
-public class TopologySorting {
+public class TopologySortingDirectedGraph {
+	
+	
+	
 	/*topsort   stack + DFS
 	 * 		// First: call DFS for every vertices
 			// Second: copy integer from stack to list
@@ -126,14 +145,14 @@ public class TopologySorting {
 		// In topological sorting, we use a temporary stack.
 		Stack stack = new Stack();//#1
 		ArrayList<Integer> index = new ArrayList<Integer>();//#2
-		index.add(g.v-1);//#2
-		int[] resarray = new int[g.v];
+		index.add(g.size-1);//#2
+		int[] resarray = new int[g.size];
 		//boolean[] visited = new boolean[g.v];//DFS
-		int[] visited = new int[g.v];//DFS
+		int[] visited = new int[g.size];//DFS
 		// Call the recursive helper function to store Topological
         // Sort starting from all vertices one by one
 		// We don’t print the vertex immediately, we first recursively call topological sorting for all its adjacent vertices, 
-		for (int k = 0 ; k < g.v; k++){
+		for (int k = 0 ; k < g.size; k++){
 			//if (visited[k] == false){
 			if (visited[k] == 0){
 				// DFS
@@ -150,7 +169,11 @@ public class TopologySorting {
 		}
 		return res;
 	}
-	/*dfs
+	
+	
+	
+	
+	/*dfs  time limit exceed 
 	 * 		// First: mark current as visited
 			// Second: for loop all neighbors if not visited recurse
 			// third: Push current vertex to stack which stores result
@@ -179,6 +202,10 @@ public class TopologySorting {
 		resarray[cur] = k;
 		index.set(0, cur-1);
 	}
+	
+	
+	
+	
 	/*dfs
 	 *  avoid time limit exceed by memoizing visited state 
 	 *  3 states -1(visited),0(not visited),1(visited and success)
@@ -221,6 +248,10 @@ public class TopologySorting {
 		resarray[cur] = k;
 		index.set(0, cur-1);
 	}	
+	
+	
+	
+	
 	public static void main(String[] args){
 		Graph g = new Graph(6);
 		g.addEdge(5,2);
@@ -232,7 +263,7 @@ public class TopologySorting {
 		g.addEdge(2,3);
 		g.addEdge(3,1);
 		
-		TopologySorting sol = new TopologySorting();
+		TopologySortingDirectedGraph sol = new TopologySortingDirectedGraph();
 		Long start = System.nanoTime();
 		System.out.println(" a list of edges[end,start],"+g+"\n ordering list: "+sol.topsort(g));
 		Long estimate = System.nanoTime() - start;
@@ -248,13 +279,13 @@ public class TopologySorting {
 	}
 }
 class Graph{
-	int v;
+	int size;
 	LinkedList<Integer>[] adj;
-	Graph(int v){
-		this.v = v;
+	Graph(int size){
+		this.size = size;
 		// NOTE: java.lang.NullPointerException
-		adj = new LinkedList[v];
-		for (int i = 0 ; i < this.v; i++){
+		adj = new LinkedList[size];
+		for (int i = 0 ; i < this.size; i++){
 			this.adj[i] = new LinkedList<Integer>();
 		}
 	}
@@ -263,7 +294,7 @@ class Graph{
 	}
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0 ; i < this.v; i++){
+		for (int i = 0 ; i < this.size; i++){
 			if (this.adj[i].size() == 0) {
 				continue;
 			}
