@@ -127,6 +127,8 @@ public class SQRTX {
 		//						}
 		//        4. return  (l + r)/2;  // most of the case won't be equal, so we narrow down the boundary
 	 * */
+	// NOTE : if (0 < x < 1)  0 < sqrt(x) < 1
+	// Time:O(logX*bias precision) = O(logX)*Olog(bias precision) = O(logX)* constant
 	public double sqrtReal(double x){
 		// Zero: neg and Zero and one check
 		if (x < 0.0)
@@ -146,6 +148,10 @@ public class SQRTX {
 		//        4. return  (l + r)/2;  // most of the case won't be equal, so we narrow down the boundary
 		double l = 1.0;
 		double r = x/2+1;
+		if (x < 1.0){
+			l = 0;
+			r = 1;
+		}
 		double epislon = 0.00001;
 		while( r - l > epislon) {
 		//while (l <= r){// r -l >= 0
@@ -207,10 +213,10 @@ public class SQRTX {
 		System.out.println("sqrtNewton("+x+") = "+sol.sqrtNewton(x));		
 		System.out.println();
 		
-		x = 20;
-		System.out.println("sqrt("+x+") = "+sol.sqrt(x));
-		System.out.println("sqrtReal"+x+") = "+sol.sqrtReal((double)x));
-		System.out.println("sqrtNewton("+x+") = "+sol.sqrtNewton(x));		
+		double y = 0.5;
+		//System.out.println("sqrt("+y+") = "+sol.sqrt(y));
+		System.out.println("sqrtReal"+y+") = "+sol.sqrtReal((double)y));
+		//System.out.println("sqrtNewton("+y+") = "+sol.sqrtNewton(y));		
 		System.out.println();
 		
 		
